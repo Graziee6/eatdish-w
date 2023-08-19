@@ -1,13 +1,14 @@
-import React from 'react'
+import React from "react";
 
 function iconBar() {
   return (
-    <div className='flex'>
-        {/* icon */}
-        
-        {/* text */}
+    <div className="flex bg-white" >
+      {/* icon */}
+    
+      {/* text */}
+      <p className="text-stone-500"></p>
     </div>
-  )
+  );
 }
 
-export default iconBar
+export default iconBar;
