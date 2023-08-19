@@ -1,2 +1,2 @@
 # eatdish-web
-A sample
+A sample of the frontend
