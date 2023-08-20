@@ -2,13 +2,19 @@ import IconBar from "../components/iconBar";
 import { CiSearch } from "react-icons/ci";
 import { CiFilter } from "react-icons/ci";
 import { BsArrowRightShort } from "react-icons/bs";
+import { RxDashboard } from "react-icons/rx";
 import Card from "./../components/card";
+import NavItem from "./../components/navItem";
+import { TbNotes } from "react-icons/tb";
+import { BsHeart } from "react-icons/bs";
+import { TbChartPie } from "react-icons/tb";
+import { FiSettings } from "react-icons/fi";
 
 export default function Dashboard() {
   const noodleImg = "./../assets/boiled-noodles.png";
   const noodleAltText = "noodles";
   const card1Values = [
-    "./../assets/noodle-2.jpg",
+    "./../assets/boiled-noodles.png",
     "noodles",
     "./../assets/chicken-1.jpg",
     "chicken",
@@ -20,9 +26,9 @@ export default function Dashboard() {
     "shrimp",
   ];
   const card2Values = [
-    "./../assets/smoothie.jpeg",
+    "../assets/smoothie.jpeg",
     "milk",
-    "./../assets/chicken-1.jpg",
+    "../assets/chicken-1.jpg",
     "banana",
     "./../assets/vegy-1.jpg",
     "kiwi",
@@ -36,7 +42,31 @@ export default function Dashboard() {
     <div className="flex h-full bg-white p-0">
       {/* left div */}
       <div className="flex-none w-1/6 p-10">
-        <img src="../assets/eatdish-logo.png" alt="eatdish-logo" />
+        <img src="./../assets/logo.png" alt="eatdish-logo" />
+        <div className="icons mt-4">
+          <NavItem icon={RxDashboard} text="overview" />
+          <NavItem icon={TbNotes} text="recipes" />
+          <NavItem icon={BsHeart} text="favorites" />
+          <NavItem icon={TbChartPie} text="community" />
+          <NavItem icon={FiSettings} text="settings" />
+
+          <div className="bg-amber-500 w-full h-max p-4 grid grid-rows-2 capitalize justify-center rounded-xl mt-16">
+            {/* add-recipe image div */}
+            <div className="w-full row-span-1 justify-center content-center">
+              <img
+                src="./../assets/own-recipe.jpg"
+                alt="own recipe"
+                className="bg-amber-500 w-11/12 h-11/12 relative bottom-14 rounded-full"
+              />
+            </div>
+            <div className="text-white text-sm row-span-1">
+              <p>Share your own recipe with the community</p>
+              <div className="px-1 rounded-xl py-2 bg-white mt-2 text-amber-500 text-center">
+                <p>upload now</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* center div */}
@@ -64,14 +94,12 @@ export default function Dashboard() {
           <div></div>
         </div>
 
-        <div className="grid grid-cols-2 gap-10 mb-2">
-          <div>
-            <h2 className="text-lg font-semibold text-indigo-950 mb-6">
-              Based on the type of food you like
-            </h2>
+        <div className="w-full grid grid-cols-3 gap-10 mb-2 p-2">
+          <div className="text-lg font-semibold text-indigo-950 mb-6 col-span-2">
+            <h2>Based on the type of food you like</h2>
           </div>
-          <div className="flex cursor-pointer">
-            <p className="capitalize text-amber-500 text-sm">View more</p>
+          <div className="grid grid-cols-2 cursor-pointer col-span-1 capitalize text-amber-500 text-sm">
+            <p>View more</p>
             <BsArrowRightShort className="text-amber-500" />
           </div>
         </div>
@@ -95,7 +123,7 @@ export default function Dashboard() {
           />
 
           <Card
-            image={noodleImg}
+            image={card2Values[0]}
             altText={noodleAltText}
             name="smoothie"
             cal="209"
