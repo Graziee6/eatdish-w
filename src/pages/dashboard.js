@@ -56,12 +56,12 @@ export default function Dashboard() {
               <img
                 src="./../assets/own-recipe.jpg"
                 alt="own recipe"
-                className="bg-amber-500 w-11/12 h-11/12 relative bottom-14 rounded-full"
+                className="w-11/12 h-11/12 relative bottom-12 rounded-full"
               />
             </div>
             <div className="text-white text-sm row-span-1">
               <p>Share your own recipe with the community</p>
-              <div className="px-1 rounded-xl py-2 bg-white mt-2 text-amber-500 text-center">
+              <div className="px-1 rounded-xl py-2 bg-white mt-2 text-amber-500 text-center cursor-pointer">
                 <p>upload now</p>
               </div>
             </div>
