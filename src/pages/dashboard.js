@@ -9,33 +9,117 @@ import { TbNotes } from "react-icons/tb";
 import { BsHeart } from "react-icons/bs";
 import { TbChartPie } from "react-icons/tb";
 import { FiSettings } from "react-icons/fi";
+import { RiArrowDropDownLine } from "react-icons/ri";
+// import Badge from "@mui/material/Badge";
+import { BiSolidBell } from "react-icons/bi";
 
+import { Chart as ChartJs, ArcElement, Tooltip, Legend } from "chart.js";
+import { Doughnut } from "react-chartjs-2";
+import CardOnRight from "./../components/cardOnRight";
+ChartJs.register(ArcElement, Tooltip, Legend);
 export default function Dashboard() {
-  const noodleImg = "./../assets/boiled-noodles.png";
-  const noodleAltText = "noodles";
-  const card1Values = [
-    "./../assets/boiled-noodles.png",
-    "noodles",
-    "./../assets/chicken-1.jpg",
-    "chicken",
-    "./../assets/vegy-1.jpg",
-    "vegetable",
-    "./../assets/onion-1.png",
-    "onion",
-    "./../assets/shrimp-1.jpg",
-    "shrimp",
+  const BigCardValues = [
+    {
+      id: 1,
+      headerImage: "./../assets/boiled-noodles.png",
+      headerImageAlt: "Spicy ramen noodles",
+      name: "Boiled noodles",
+      cal: "239",
+      imgSrc1: "./../assets/noodle-2.jpg",
+      imgAlt1: "noodles",
+      imgSrc2: "./../assets/chicken-1.jpg",
+      imgAlt2: "chicken",
+      imgSrc3: "./../assets/vegy-1.jpg",
+      imgAlt3: "vegetable",
+      imgSrc4: "./../assets/onion-1.png",
+      imgAlt4: "onion",
+      imgSrc5: "./../assets/shrimp-1.jpg",
+      imgAlt5: "shrimp",
+    },
+
+    {
+      id: 2,
+      headerImage: "./../assets/boiled-noodles.png",
+      headerImageAlt: "Smoothie",
+      name: "Smoothie",
+      cal: "209",
+      imgSrc1: "./../assets/milk.avif",
+      imgAlt1: "milk",
+      imgSrc2: "./../assets/chicken-1.jpg",
+      imgAlt2: "chicken",
+      imgSrc3: "./../assets/vegy-1.jpg",
+      imgAlt3: "vegetable",
+      imgSrc4: "./../assets/onion-1.png",
+      imgAlt4: "onion",
+      imgSrc5: "./../assets/shrimp-1.jpg",
+      imgAlt5: "shrimp",
+    },
   ];
-  const card2Values = [
-    "../assets/smoothie.jpeg",
-    "milk",
-    "../assets/chicken-1.jpg",
-    "banana",
-    "./../assets/vegy-1.jpg",
-    "kiwi",
-    "./../assets/onion-1.png",
-    "lemon",
-    "./../assets/shrimp-1.jpg",
-    "pear",
+
+  const data = {
+    labels: ["Calories", "Carbohydrates", "Fats", "Protein"],
+    datasets: [
+      {
+        label: "Food",
+        data: [15, 15, 30, 40],
+        backgroundColor: ["#fff8e7", "#5d00e1", "#006400", "orange"],
+        borderColor: ["#fff8e7", "#5d00e1", "#006400", "orange"],
+        hoverBackgroundColor: ["#fff8e7", "#5d00e1", "#006400", "orange"],
+      },
+    ],
+  };
+
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    width: 500,
+    height: 500,
+    legend: {
+      display: true,
+      position: "bottom", // You can change this to 'top', 'left', or 'right'
+      labels: {
+        fontColor: "black", // Set the font color of the legend labels
+        fontSize: 12, // Set the font size of the legend labels
+        padding: 10, // Set the padding between legend labels
+      },
+    },
+  };
+
+  const textCenter = {
+    id: "textCenter",
+    beforeDatasetsDraw(chart, args, pluginOptions) {
+      const { ctx } = chart;
+
+      ctx.save();
+      ctx.font = "12px sans-serif";
+      ctx.fillStyle = "#4b0082";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(
+        "7 days",
+        chart.getDatasetMeta(0).data[0].x,
+        chart.getDatasetMeta(0).data[0].y
+      );
+    },
+  };
+
+  const cardOnRightValues = [
+    {
+      id: 1,
+      imgSrc: "",
+      alt: "",
+      heading: "Autumn soup",
+      p: "with an appetizing almond mixture",
+      timing: 15,
+    },
+    {
+      id: 2,
+      imgSrc: "",
+      alt: "",
+      heading: "Grilled cheese sandwich",
+      p: "with a typical mozarella",
+      timing: 15,
+    },
   ];
 
   return (
@@ -50,16 +134,16 @@ export default function Dashboard() {
           <NavItem icon={TbChartPie} text="community" />
           <NavItem icon={FiSettings} text="settings" />
 
-          <div className="bg-amber-500 w-full h-max p-4 grid grid-rows-2 capitalize justify-center rounded-xl mt-16">
+          <div className="bg-amber-500 w-full h-max px-4 grid grid-rows-2 capitalize justify-center rounded-xl mt-16">
             {/* add-recipe image div */}
             <div className="w-full row-span-1 justify-center content-center">
               <img
                 src="./../assets/own-recipe.jpg"
                 alt="own recipe"
-                className="w-11/12 h-11/12 relative bottom-12 rounded-full"
+                className="w-24 h-24 relative bottom-12 rounded-full mx-auto"
               />
             </div>
-            <div className="text-white text-sm row-span-1">
+            <div className="text-white relative bottom-12 text-sm row-span-1">
               <p>Share your own recipe with the community</p>
               <div className="px-1 rounded-xl py-2 bg-white mt-2 text-amber-500 text-center cursor-pointer">
                 <p>upload now</p>
@@ -105,44 +189,91 @@ export default function Dashboard() {
         </div>
 
         <div className="w-full flex justify-center align-middle">
-          <Card
-            image={noodleImg}
-            altText={noodleAltText}
-            name="Boiled noodles"
-            cal="239"
-            imgSrc1={card1Values[0]}
-            imgAlt1={card1Values[1]}
-            imgSrc2={card1Values[2]}
-            imgAlt2={card1Values[3]}
-            imgSrc3={card1Values[4]}
-            imgAlt3={card1Values[5]}
-            imgSrc4={card1Values[6]}
-            imgAlt4={card1Values[7]}
-            imgSrc5={card1Values[8]}
-            imgAlt5={card1Values[9]}
-          />
-
-          <Card
-            image={card2Values[0]}
-            altText={noodleAltText}
-            name="smoothie"
-            cal="209"
-            imgAlt1={card2Values[1]}
-            imgSrc1={card2Values[0]}
-            imgSrc2={card2Values[2]}
-            imgAlt2={card2Values[3]}
-            imgSrc3={card2Values[4]}
-            imgAlt3={card2Values[5]}
-            imgSrc4={card2Values[6]}
-            imgAlt4={card2Values[7]}
-            imgSrc5={card2Values[8]}
-            imgAlt5={card2Values[9]}
-          />
+          {BigCardValues.map((card) => (
+            <Card
+              key={card.id}
+              image={card.headerImage}
+              altText={card.headerImageAlt}
+              name={card.name}
+              cal={card.cal}
+              imgSrc1={card.imgSrc1}
+              imgAlt1={card.imgAlt1}
+              imgSrc2={card.imgSrc2}
+              imgAlt2={card.imgAlt2}
+              imgSrc3={card.imgSrc3}
+              imgAlt3={card.imgAlt3}
+              imgSrc4={card.imgSrc4}
+              imgAlt4={card.imgAlt4}
+              imgSrc5={card.imgSrc5}
+              imgAlt5={card.imgAlt5}
+            />
+          ))}
         </div>
       </div>
 
       {/* right div */}
-      <div className="flex-none w-2/6"></div>
+      <div className="flex-none w-2/6 p-8">
+        {/* the icons */}
+        <div className="float-right clear-right flex">
+          <div className="w-8 h-8 rounded-lg bg-white drop-shadow mx-1">
+            <BiSolidBell
+              size={18}
+              className="text-indigo-950 mx-auto my-auto"
+            />
+            {/* <Badge variant="dot" color="danger">
+            </Badge> */}
+          </div>
+          <div className="w-8 h-8 rounded-lg bg-amber-500 mx-1">
+            <img src="./../avatar.png" alt="avatar" />
+          </div>
+        </div>
+
+        {/* chart and its headings */}
+        <div className="m-auto">
+          <div className=" grid grid-cols-2 font-semibold mb-6 w-3/4">
+            <h2 className="text-indigo-950 py-2 text-xl capitalize">Report</h2>
+            <p className="text-stone-500 text-md row-span-1">on this week</p>
+            <div>
+              <p className="capitalize flex text-stone-500 text-md row-span-1">
+                From 6-13, Nov 2021
+              </p>
+              <RiArrowDropDownLine />
+            </div>
+          </div>
+          {/*  chart*/}
+          <div className="w-3/4">
+            <Doughnut
+              data={data}
+              options={chartOptions}
+              plugins={[textCenter]}
+            ></Doughnut>
+          </div>
+        </div>
+
+        <div className="w-full grid grid-cols-2 gap-10 p-2 capitalize m-auto">
+          <div className="text-lg font-semibold text-indigo-950 mb-6 col-span-1">
+            <h2>More recipe</h2>
+          </div>
+          <div className="grid grid-cols-2 cursor-pointer col-span-1  text-amber-500 text-sm">
+            <p>View more</p>
+            <BsArrowRightShort className="text-amber-500" />
+          </div>
+        </div>
+
+        {/* recipes */}
+        <div className="grid grid-cols-2 gap-4">
+          {cardOnRightValues.map((card) => (
+            <CardOnRight
+              key={card.id}
+              imgSrc={card.imgSrc}
+              imgAlt={card.alt}
+              heading={card.heading}
+              p={card.p}
+              timing={card.timing}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

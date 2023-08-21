@@ -2,8 +2,8 @@ import React from 'react'
 
 function lilCard({imgSrc, imgAlt, item}) {
   return (
-    <div className="bg-orange-100 rounded-2xl h-24 p-2 grid grid-rows-2 gap-0.5 justify-center align-middle text-center">
-        <img src={imgSrc} alt={imgAlt}/>
+    <div className="bg-orange-50 rounded-2xl h-24 p-2 grid grid-rows-2 gap-0.5 justify-center align-middle text-center">
+        <img src={imgSrc} alt={imgAlt} className="bg-orange-50"/>
         <p className="text-stone-500 capitalize text-sm">{item}</p>
     </div>
   )
