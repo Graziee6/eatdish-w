@@ -5,11 +5,17 @@ function cardOnRight({ imgSrc, imgAlt, heading, p, timing }) {
   return (
     <div className="bg-orange-50 rounded-2xl p-2 grid grid-rows-3 justify-center align-middle">
       <div>
-        <img src={imgSrc} alt={imgAlt} />
+        <img
+          src={imgSrc}
+          alt={imgAlt}
+          className="w-24 h-24 mx-auto rounded-full"
+        />
       </div>
       <div className="text-md font-semibold mb-6 w-3/4">
-        <h2 className="text-indigo-950 py-2">{heading}</h2>
-        <p className="text-stone-500 capitalize text-xs row-span-1">{p}</p>
+        <h2 className="text-indigo-950 py-2 mx-auto">{heading}</h2>
+        <p className="text-stone-500 capitalize text-xs row-span-1 mx-auto">
+          {p}
+        </p>
       </div>
 
       <div className="grid grid-cols-2 gap-0">

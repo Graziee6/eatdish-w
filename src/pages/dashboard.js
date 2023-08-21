@@ -106,16 +106,16 @@ export default function Dashboard() {
   const cardOnRightValues = [
     {
       id: 1,
-      imgSrc: "",
-      alt: "",
+      imgSrc: "./../assets/soup.jpeg",
+      alt: "soup",
       heading: "Autumn soup",
       p: "with an appetizing almond mixture",
       timing: 15,
     },
     {
       id: 2,
-      imgSrc: "",
-      alt: "",
+      imgSrc: "./../assets/cheese-sandwich.jpeg",
+      alt: "cheese sandwich",
       heading: "Grilled cheese sandwich",
       p: "with a typical mozarella",
       timing: 15,
@@ -175,7 +175,9 @@ export default function Dashboard() {
               of our community
             </p>
           </div>
-          <div></div>
+          <div>
+          <img src="./../assets/choco.jpg" className="w-80 h-32 rounded-lg" alt="choco" />
+          </div>
         </div>
 
         <div className="w-full grid grid-cols-3 gap-10 mb-2 p-2">
@@ -224,7 +226,7 @@ export default function Dashboard() {
             </Badge> */}
           </div>
           <div className="w-8 h-8 rounded-lg bg-amber-500 mx-1">
-            <img src="./../avatar.png" alt="avatar" />
+            <img src="./../assets/avatar.png" className="rounded-lg" alt="avatar" />
           </div>
         </div>
 
