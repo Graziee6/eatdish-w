@@ -22,9 +22,12 @@ function card({
   return (
     <div className="bg-white h-max p-4 w-1/2 rounded-2xl mr-4">
       {/* top div */}
-      <div className="grid grid-cols-2 gap-1 h-2/6 py-4">
-        <img src={image} alt={altText} />
-        <div>
+      <div className="w-full grid grid-cols-4 gap-1 py-4">
+        <div className="rounded-full h-2/6 w-1/2 col-span-2">
+          <img src={image} alt={altText} className="rounded-full" />
+        </div>
+
+        <div className="col-span-2">
           <p className="text-indigo-950 text-sm font-semibold capitalize">
             {name}
           </p>
@@ -43,8 +46,8 @@ function card({
           <LilCard imgSrc={imgSrc3} imgAlt={imgAlt3} item={imgAlt3} />
           <LilCard imgSrc={imgSrc4} imgAlt={imgAlt4} item={imgAlt4} />
           <LilCard imgSrc={imgSrc5} imgAlt={imgAlt5} item={imgAlt5} />
-          <div className="bg-slate-100 rounded-2xl h-24 p-2 grid grid-rows-2 gap-0.5 justify-center align-middle text-center">
-            <p className="text-amber-500 capitalize text-sm cursor-pointer leading-loose">
+          <div className="bg-slate-100 rounded-2xl h-24 flex flex-row justify-center items-center">
+            <p className="text-amber-500 capitalize text-sm cursor-pointer">
               3+ more
             </p>
           </div>
@@ -52,14 +55,14 @@ function card({
       </div>
 
       {/* bottom div */}
-      <div className="grid grid-flow-col-dense grid-cols-2 gap-1">
+      <div className="flex justify-between h-8 w-full">
         {/* play */}
-        <div className="rounded-full bg-amber-500 p-2 grid grid-cols-5 gap-1">
-          <div className="w-6 h-6 rounded-full bg-white p-1 align-middle justify-center col-span-1">
+        <div className="rounded-full bg-amber-500 p-2 flex justify-start gap-1">
+          <div className="h-full rounded-full bg-white flex align-middle h-11/12 justify-center">
             <BsPlayFill size={18} className="text-amber-500" />
           </div>
 
-          <div className="col-span-4">
+          <div className="h-full w-1/3">
             <p className="capitalize font-light text-sm text-white leading-relaxed">
               Watch tutorial
             </p>

@@ -40,7 +40,7 @@ export default function Dashboard() {
     {
       id: 2,
       headerImage: "./../assets/boiled-noodles.png",
-      headerImageAlt: "Smoothie",
+      headerImageAlt: "Smoothies",
       name: "Smoothie",
       cal: "209",
       imgSrc1: "./../assets/milk.avif",
@@ -118,7 +118,7 @@ export default function Dashboard() {
       alt: "cheese sandwich",
       heading: "Grilled cheese sandwich",
       p: "with a typical mozarella",
-      timing: 15,
+      timing: 10,
     },
   ];
 
@@ -165,22 +165,26 @@ export default function Dashboard() {
         </div>
 
         {/* the orange-bg intro */}
-        <div className="header flex bg-amber-500 p-6 text-white rounded-3xl mt-8 mb-4">
-          <div className="w-3/4 p-2">
-            <h1 className="capitalize font-bold text-xl">
+        <div className="header w-full flex justify-between p-6 bg-amber-500 text-white rounded-3xl mt-8 mb-4">
+          <div className="w-3/4 flex flex-column justify-center gap-2">
+            <h1 className="capitalize font-bold text-xl w-full">
               add your own recipe
             </h1>
-            <p>
+            <p className="text-sm text-stone-200 w-full">
               Upload your own home-made recipe and share it with other members
               of our community
             </p>
           </div>
-          <div>
-          <img src="./../assets/choco.jpg" className="w-80 h-32 rounded-lg" alt="choco" />
+          <div className="w-1/4">
+            <img
+              src="./../assets/choco.jpg"
+              className="h-11/12 rounded-lg"
+              alt="choco"
+            />
           </div>
         </div>
 
-        <div className="w-full grid grid-cols-3 gap-10 mb-2 p-2">
+        <div className="w-full grid grid-cols-3 justify-between gap-10 mb-2 p-2">
           <div className="text-lg font-semibold text-indigo-950 mb-6 col-span-2">
             <h2>Based on the type of food you like</h2>
           </div>
@@ -217,23 +221,24 @@ export default function Dashboard() {
       <div className="flex-none w-2/6 p-8">
         {/* the icons */}
         <div className="float-right clear-right flex">
-          <div className="w-8 h-8 rounded-lg bg-white drop-shadow mx-1">
-            <BiSolidBell
-              size={18}
-              className="text-indigo-950 mx-auto my-auto"
-            />
+          <div className="w-8 h-8 rounded-lg bg-white drop-shadow flex justify-center items-center">
+            <BiSolidBell size={18} className="text-indigo-950 mx-auto" />
             {/* <Badge variant="dot" color="danger">
             </Badge> */}
           </div>
           <div className="w-8 h-8 rounded-lg bg-amber-500 mx-1">
-            <img src="./../assets/avatar.png" className="rounded-lg" alt="avatar" />
+            <img
+              src="./../assets/avatar.png"
+              className="rounded-lg"
+              alt="avatar"
+            />
           </div>
         </div>
 
         {/* chart and its headings */}
         <div className="m-auto">
-          <div className=" grid grid-cols-2 font-semibold mb-6 w-3/4">
-            <h2 className="text-indigo-950 py-2 text-xl capitalize">Report</h2>
+          <div className="grid grid-flow-col-dense grid-cols-3 font-semibold mb-6 w-3/4">
+            <p className="text-indigo-950 py-2 text-xl capitalize">Report</p>
             <p className="text-stone-500 text-md row-span-1">on this week</p>
             <div>
               <p className="capitalize flex text-stone-500 text-md row-span-1">
