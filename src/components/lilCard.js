@@ -1,12 +1,17 @@
-import React from 'react'
+import React from "react";
 
-function lilCard({imgSrc, imgAlt, item}) {
+function lilCard({ imgSrc, imgAlt, item }) {
   return (
-    <div className="bg-orange-50 rounded-2xl h-24 p-2 grid grid-rows-2 gap-0.5 justify-center align-middle text-center">
-        <img src={imgSrc} alt={imgAlt} className="bg-orange-50"/>
-        <p className="text-stone-500 capitalize text-sm">{item}</p>
+    <div className="bg-orange-50 rounded-2xl h-24 p-2 flex-row gap-3 justify-center align-center text-center">
+      <div className="">
+        <img src={imgSrc} alt={imgAlt} className="bg-orange-50 h-12" />
+      </div>
+      {/* name */}
+      <div className="h-12 text-stone-500 capitalize text-sm flex justify-center align-center">
+        <p>{item}</p>
+      </div>
     </div>
-  )
+  );
 }
 
-export default lilCard
+export default lilCard;
