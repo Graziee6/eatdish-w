@@ -26,7 +26,7 @@ export default function Dashboard() {
       name: "Boiled noodles",
       cal: "239",
       imgSrc1: "./../assets/noodle-2.jpg",
-      imgAlt1: "noodles",
+      imgAlt1: "noodle",
       imgSrc2: "./../assets/chicken-1.jpg",
       imgAlt2: "chicken",
       imgSrc3: "./../assets/vegy-1.jpg",
@@ -35,11 +35,12 @@ export default function Dashboard() {
       imgAlt4: "onion",
       imgSrc5: "./../assets/shrimp-1.jpg",
       imgAlt5: "shrimp",
+      numberOfMoreRecipes: 3,
     },
 
     {
       id: 2,
-      headerImage: "./../assets/boiled-noodles.png",
+      headerImage: "./../assets/smoothie.jpeg",
       headerImageAlt: "Smoothies",
       name: "Smoothie",
       cal: "209",
@@ -53,6 +54,7 @@ export default function Dashboard() {
       imgAlt4: "onion",
       imgSrc5: "./../assets/shrimp-1.jpg",
       imgAlt5: "shrimp",
+      numberOfMoreRecipes: 1,
     },
   ];
 
@@ -76,7 +78,7 @@ export default function Dashboard() {
     height: 500,
     legend: {
       display: true,
-      position: "bottom", // You can change this to 'top', 'left', or 'right'
+      position: "right", // You can change this to 'top', 'left', or 'right'
       labels: {
         fontColor: "black", // Set the font color of the legend labels
         fontSize: 12, // Set the font size of the legend labels
@@ -123,9 +125,9 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="flex h-full bg-white p-0">
+    <div className="flex h-full bg-transparent p-0">
       {/* left div */}
-      <div className="flex-none w-1/6 p-10">
+      <div className="flex-none w-1/6 bg-white p-10">
         <img src="./../assets/logo.png" alt="eatdish-logo" />
         <div className="icons mt-4">
           <NavItem icon={RxDashboard} text="overview" />
@@ -154,19 +156,19 @@ export default function Dashboard() {
       </div>
 
       {/* center div */}
-      <div className="flex-none w-3/6 bg-slate-50 p-10">
-        <div className="search grid grid-flow-col-dense grid-cols-2 w-full">
-          <IconBar
-            icon={CiSearch}
-            text="Search by food name"
-            className="w-3/4"
-          />
-          <IconBar icon={CiFilter} text="Filter" className="w-1/4" />
+      <div className="w-3/6 bg-slate-50 p-10">
+        <div className="w-full grid grid-cols-4 gap-4 bg-slate-50">
+          <div className="col-span-3">
+            <IconBar icon={CiSearch} text="Search by food name" />
+          </div>
+          <div className="col-span-1">
+            <IconBar icon={CiFilter} text="Filter"/>
+          </div>
         </div>
 
         {/* the orange-bg intro */}
         <div className="header w-full flex justify-between p-6 bg-amber-500 text-white rounded-3xl mt-8 mb-4">
-          <div className="w-3/4 flex flex-column justify-center gap-2">
+          <div className="w-3/4 flex flex-col justify-center gap-2">
             <h1 className="capitalize font-bold text-xl w-full">
               add your own recipe
             </h1>
@@ -188,7 +190,7 @@ export default function Dashboard() {
           <div className="text-lg font-semibold text-indigo-950 mb-6 col-span-2">
             <h2>Based on the type of food you like</h2>
           </div>
-          <div className="grid grid-cols-2 cursor-pointer col-span-1 capitalize text-amber-500 text-sm">
+          <div className="flex justify-evenly cursor-pointer col-span-1 capitalize text-amber-500 text-sm">
             <p>View more</p>
             <BsArrowRightShort className="text-amber-500" />
           </div>
@@ -212,6 +214,7 @@ export default function Dashboard() {
               imgAlt4={card.imgAlt4}
               imgSrc5={card.imgSrc5}
               imgAlt5={card.imgAlt5}
+              numberOfMoreRecipes={card.numberOfMoreRecipes}
             />
           ))}
         </div>
@@ -220,7 +223,7 @@ export default function Dashboard() {
       {/* right div */}
       <div className="flex-none w-2/6 p-8">
         {/* the icons */}
-        <div className="float-right clear-right flex">
+        <div className="flex justify-end mb-4">
           <div className="w-8 h-8 rounded-lg bg-white drop-shadow flex justify-center items-center">
             <BiSolidBell size={18} className="text-indigo-950 mx-auto" />
             {/* <Badge variant="dot" color="danger">
@@ -237,18 +240,24 @@ export default function Dashboard() {
 
         {/* chart and its headings */}
         <div className="m-auto">
-          <div className="grid grid-flow-col-dense grid-cols-3 font-semibold mb-6 w-3/4">
-            <p className="text-indigo-950 py-2 text-xl capitalize">Report</p>
-            <p className="text-stone-500 text-md row-span-1">on this week</p>
-            <div>
-              <p className="capitalize flex text-stone-500 text-md row-span-1">
-                From 6-13, Nov 2021
-              </p>
-              <RiArrowDropDownLine />
+          <div className="flex flex-col mb-6 w-3/4">
+            <p className="font-semibold">
+              <span className="text-indigo-950 text-md py-2 text-xl capitalize">
+                Report
+              </span>
+              <span className="text-stone-300 text-sm"> on this week</span>
+            </p>
+            <div className="flex cursor-pointer text-stone-300">
+              <div className="text-xs">
+                <p className="capitalize flex ">From 6-13, Nov 2021</p>
+              </div>
+              <div>
+                <RiArrowDropDownLine size={18} />
+              </div>
             </div>
           </div>
           {/*  chart*/}
-          <div className="w-3/4">
+          <div className="w-3/4 py-4">
             <Doughnut
               data={data}
               options={chartOptions}

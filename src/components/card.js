@@ -18,13 +18,14 @@ function card({
   imgAlt4,
   imgSrc5,
   imgAlt5,
+  numberOfMoreRecipes
 }) {
   return (
     <div className="bg-white h-max p-4 w-1/2 rounded-2xl mr-4">
       {/* top div */}
       <div className="w-full grid grid-cols-4 gap-1 py-4">
-        <div className="rounded-full h-2/6 w-1/2 col-span-2">
-          <img src={image} alt={altText} className="rounded-full" />
+        <div className="rounded-full col-span-2">
+          <img src={image} alt={altText} className="h-16 w-16 rounded-full" />
         </div>
 
         <div className="col-span-2">
@@ -48,31 +49,31 @@ function card({
           <LilCard imgSrc={imgSrc5} imgAlt={imgAlt5} item={imgAlt5} />
           <div className="bg-slate-100 rounded-2xl h-24 flex flex-row justify-center items-center">
             <p className="text-amber-500 capitalize text-sm cursor-pointer">
-              3+ more
+              {numberOfMoreRecipes}+ more
             </p>
           </div>
         </div>
       </div>
 
       {/* bottom div */}
-      <div className="flex justify-between h-8 w-full">
+      <div className="h-8 w-full flex flex-row gap-1 justify-between align-middle">
         {/* play */}
-        <div className="rounded-full bg-amber-500 p-2 flex justify-start gap-1">
-          <div className="h-full rounded-full bg-white flex align-middle h-11/12 justify-center">
+        <div className="rounded-full bg-amber-500 p-2 flex justify-between gap-1 cursor-pointer">
+          <div className="h-4 w-4 rounded-full bg-white flex flex-col items-center justify-center">
             <BsPlayFill size={18} className="text-amber-500" />
           </div>
 
-          <div className="h-full w-1/3">
-            <p className="capitalize font-light text-sm text-white leading-relaxed">
+          <div>
+            <p className="capitalize font-light text-sm text-white">
               Watch tutorial
             </p>
           </div>
         </div>
 
         {/* time */}
-        <div className="justify-center align-middle grid grid-cols-4 gap-0.5 text-stone-500">
-          <MdOutlineWatchLater size={20} className="col-span-1" />
-          <p className="col-span-3">15 mins</p>
+        <div className="flex gap-1 text-sm text-stone-500">
+          <MdOutlineWatchLater size={18} />
+          <p>15 mins</p>
         </div>
       </div>
     </div>
